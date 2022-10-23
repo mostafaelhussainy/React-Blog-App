@@ -1,5 +1,7 @@
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
+import Spinner from 'react-bootstrap/Spinner';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
   // const handleDelete = (id) => {
@@ -11,7 +13,7 @@ const Home = () => {
   return (
     <div className="home">
         {error && <div>{ error }</div>}
-        {isPending && <p>Loading .....</p>}                  {/* conditional loading message */} 
+        {isPending && <Spinner animation="border" variant="primary" />}                  {/* conditional loading message */} 
         {blogs && <BlogList blogs={blogs} title="All Blogs" />}  {/* because we can't render null at the beginning */}
     </div>
   );

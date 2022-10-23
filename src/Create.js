@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
+import Button from 'react-bootstrap/Button';
 
 const Create = () => {
   // to track the change in the inputs we use the useState hook 
@@ -24,30 +26,33 @@ const Create = () => {
 
   return (
     <div className="create">
-      <h2>Add a New Blog</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Blog title:</label>
+      <h2 className="text-info mb-2 text-opacity-50">Add a New Blog</h2>
+      <form onSubmit={handleSubmit} className="text-center">
+        <label className="d-block fs-4 mb-2">Blog title:</label>
         <input 
+          className="d-block mx-auto mb-2 p-2"
           type="text" 
           required 
           value={title}
           onChange={(e) => setTitle(e.target.value)}        // onChange fires a callback to change the state of the input
         />
-        <label>Blog body:</label>
+        <label className="d-block fs-4 mb-2">Blog body:</label>
         <textarea
+          className="d-block mx-auto mb-2 p-2"
           required
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></textarea>
-        <label>Blog Author</label>
+        <label className="d-block fs-4 mb-2">Blog Author</label>
         <input
+          className="d-block mx-auto mb-5 p-2"
           required
           type="text"
           value={author}
           onChange={(e)=>setAuthor(e.target.value)}
         />
-        { !isPending && <button>Add Blog</button> }
-        { isPending && <button disabled>Adding Blog ....</button> }
+        { !isPending && <Button variant="primary" className="py-2 px-3" onClick={handleSubmit}>Add Blog</Button> }
+        { isPending && <Spinner animation="border" variant="primary" />}
       </form>
     </div>
   );

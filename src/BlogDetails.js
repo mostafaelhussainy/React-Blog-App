@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "./useFetch";
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 const BlogDetails = () => {
 
@@ -15,14 +17,14 @@ const BlogDetails = () => {
   }
   return ( 
     <div className="blog-details">
-      { isPending && <div>Loading....</div> }
+      { isPending && <Spinner animation="border" variant="primary" /> }
       { error && <div> { error } </div>}
       { blog && (
-        <article>
-          <h2>{ blog.title }</h2>
-          <p>Written by: { blog.author }</p>
-          <div>{ blog.body }</div>
-          <button onClick={handleDelete}>Delete</button>
+        <article className="my-5">
+          <h2 className="text-info text-opacity-50 mb-3">{ blog.title }</h2>
+          <p className="fs-4 text-opacity-50 mb-3">Written by: { blog.author }</p>
+          <div className="mb-3">{ blog.body }</div>
+          <Button variant="primary" className="py-2 px-3" onClick={handleDelete}>Delete</Button>
         </article>
       ) }
     </div>

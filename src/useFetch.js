@@ -6,6 +6,7 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
     useEffect(() => {
+      setTimeout(() => {
       fetch(url)                                         //npx json-server --watch data/db.json --port 8000 to watch the data at the json file
         .then(res => {
           if (!res.ok) {                                 // throw error if the respose was sent but the ok statues isn't true "no data sent"
@@ -22,6 +23,7 @@ const useFetch = (url) => {
               setIsPending(false);                           // removing the loading message
             }
           )
+      }, 500);
     }, [url])                                                // dependency: the url -> so it first update the state only on the intial render  
   
     return { data, isPending, error }

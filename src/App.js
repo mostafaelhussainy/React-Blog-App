@@ -4,11 +4,12 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App container">
         <Navbar />
         <div className="content">
           <Routes>
